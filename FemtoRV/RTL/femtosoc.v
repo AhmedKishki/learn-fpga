@@ -22,6 +22,7 @@
 `include "DEVICES/Buttons.v"        // Driver for the buttons
 `include "DEVICES/FGA.v"            // Femto Graphic Adapter
 `include "DEVICES/HardwareConfig.v" // Constant registers to query hardware config.
+`include "DEVICES/pwm.v"            // PWM driver for one LED
 
 // The Ice40UP5K has ample quantities (128 KB) of single-ported RAM that can be
 // used as system RAM (but cannot be inferred, uses a special block).
@@ -48,7 +49,10 @@ module femtosoc(
  `else
    output D1,D2,D3,D4,D5,
  `endif
-`endif	      
+`endif
+`ifdef NRV_IO_PWM
+   output D1,D2,D3,D4,D5,
+`endif
 `ifdef NRV_IO_SSD1351_1331	      
    output oled_DIN, oled_CLK, oled_CS, oled_DC, oled_RST,
 `endif
@@ -559,6 +563,20 @@ end
         | spi_flash_wbusy
 `endif		   
 ; 
+
+/****************************************************************/
+/* PWM Peripheral                                               */
+`ifdef NRV_IO_PWM
+   pwm #(
+      .WIDTH(12)
+   ) pwm(
+      .clk(clk),
+      .wstrb(io_wstrb),
+      .sel(io_word_address[IO_PWM_bit]),
+      .wdata(io_wdata),
+      .led({D4,D3,D2,D1})
+   );
+`endif
 
 /****************************************************************/
 /* And last but not least, the processor                        */

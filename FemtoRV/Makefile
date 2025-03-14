@@ -2,20 +2,20 @@ FEMTORV_DIR=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 PROJECTNAME=femtosoc
 VERILOGS=RTL/$(PROJECTNAME).v
 
-include BOARDS/bench.mk
-include BOARDS/ice4pi.mk
+# include BOARDS/bench.mk
+# include BOARDS/ice4pi.mk
 include BOARDS/icestick.mk
-include BOARDS/icestick_mecrisp_quintus.mk
-include BOARDS/icebreaker.mk
-include BOARDS/icefeather.mk
-include BOARDS/icesugar.mk
-include BOARDS/icesugar_nano.mk
-include BOARDS/fomu.mk
-include BOARDS/ulx3s.mk
-include BOARDS/ecp5_evn.mk
-#include BOARDS/arty35_symbiflow.mk
-include BOARDS/arty35_yosys_nextpnr.mk
-include BOARDS/cmod_a7_yosys_nextpnr.mk
+# include BOARDS/icestick_mecrisp_quintus.mk
+# include BOARDS/icebreaker.mk
+# include BOARDS/icefeather.mk
+# include BOARDS/icesugar.mk
+# include BOARDS/icesugar_nano.mk
+# include BOARDS/fomu.mk
+# include BOARDS/ulx3s.mk
+# include BOARDS/ecp5_evn.mk
+# include BOARDS/arty35_symbiflow.mk
+# include BOARDS/arty35_yosys_nextpnr.mk
+# include BOARDS/cmod_a7_yosys_nextpnr.mk
 
 
 .PHONY: all clean terminal testbench 
