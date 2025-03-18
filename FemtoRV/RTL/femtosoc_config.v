@@ -114,6 +114,10 @@
 
 `include "PROCESSOR/utils.v"
 
+`ifdef NRV_FEMTORV32_NETRINO
+ `include "PROCESSOR/femtorv32_neutrino.v" // More minimalistic version of the processor for IceStick (RV32E)
+`endif
+
 `ifdef NRV_FEMTORV32_QUARK
  `include "PROCESSOR/femtorv32_quark.v" // Minimalistic version of the processor for IceStick (RV32I)
 `endif

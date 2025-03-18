@@ -98,7 +98,7 @@ module FemtoRV32(
    reg [31:0] rs2;
    
    (* no_rw_check *)
-   reg [31:0] registerFile [31:0];
+   reg [31:0] registerFile [31:0]; // the registers
 
    always @(posedge clk) begin
      if (writeBack)
